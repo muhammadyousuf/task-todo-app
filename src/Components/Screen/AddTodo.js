@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Paper, TextField } from '@material-ui/core';
-
+import Button from '@material-ui/core/Button';
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -29,7 +29,7 @@ const textBoxStyle = {
 }
 
 const paperStyle = {
-    height: 120,
+    height: 150,
     marginTop: '5%',
     width: '40%',
     marginLeft: '30%',
@@ -56,6 +56,9 @@ class AddTodo extends Component {
                         value={this.state.todo}
                         onChange={(event) => this.setState({ todo: event.target.value })}
                     />
+                    <Button variant="contained" color="primary" style={{marginTop:'5%', justifyContent:'center', alignItems:'center', width:'68%' }}  >
+                     ADD TODO
+                    </Button>
                 </Paper>
 
             </div>
