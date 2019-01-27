@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Paper, TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button'; 
-import {textBoxStyle,paperStyle, buttonStyle} from '../Style/style'
+import {textBoxStyle,paperStyle, buttonStyle} from '../Style/style';
+import * as firebase from 'firebase';
 
 const styles = theme => ({
     container: {
