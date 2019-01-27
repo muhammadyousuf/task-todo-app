@@ -5,6 +5,7 @@ import { Paper, TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button'; 
 import {textBoxStyle,paperStyle, buttonStyle} from '../Style/style';
 import * as firebase from 'firebase';
+import {addFunc} from '../Function/add';
 
 const styles = theme => ({
     container: {
@@ -30,6 +31,7 @@ const styles = theme => ({
 
 
 class AddTodo extends Component {
+    ref = firebase.database().ref("Admin");
     constructor(props) {
         super(props);
         this.state = {
@@ -47,7 +49,7 @@ class AddTodo extends Component {
                         value={this.state.todo}
                         onChange={(event) => this.setState({ todo: event.target.value })}
                     />
-                    <Button variant="contained" color="primary" style={buttonStyle}  >
+                    <Button variant="contained" color="primary" style={buttonStyle} onClick={() => addFunc()} >
                         ADD TODO
                     </Button>
                 </Paper>
