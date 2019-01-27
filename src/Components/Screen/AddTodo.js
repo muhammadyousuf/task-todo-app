@@ -31,7 +31,7 @@ const styles = theme => ({
 
 
 class AddTodo extends Component {
-    ref = firebase.database().ref("Admin");
+    ref = firebase.database().ref("Todo");
     constructor(props) {
         super(props);
         this.state = {
@@ -49,7 +49,10 @@ class AddTodo extends Component {
                         value={this.state.todo}
                         onChange={(event) => this.setState({ todo: event.target.value })}
                     />
-                    <Button variant="contained" color="primary" style={buttonStyle} onClick={() => addFunc()} >
+                    <Button variant="contained" color="primary" style={buttonStyle} onClick={() => addFunc(this,()=>{
+                       this.ref.push({'todo':this.state.todo})
+                       this.setState({todo:''})
+                    })} >
                         ADD TODO
                     </Button>
                 </Paper>
