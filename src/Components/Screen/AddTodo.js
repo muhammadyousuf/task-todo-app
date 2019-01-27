@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {  TextField } from '@material-ui/core';
+import { Paper, TextField } from '@material-ui/core';
 
 const styles = theme => ({
     container: {
@@ -22,26 +22,41 @@ const styles = theme => ({
 });
 
 
+const textBoxStyle = {
+    marginTop: '4%',
+    width: '70%',
 
+}
 
+const paperStyle = {
+    height: 120,
+    marginTop: '5%',
+    width: '40%',
+    marginLeft: '30%',
+    marginRight: '30%',
+    display: 'inline-block',
+    textAlign:'center'
+};
 
 class AddTodo extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            todo:''
+            todo: ''
         }
     }
     render() {
         return (
             <div>
-                <TextField
+                <Paper style={paperStyle} elevation={20} rounded="true" >
+                    <TextField
                         id="standard-dense"
                         label="Add Todo"
-                        style={{ marginTop: '6%', width: '45%' }}
-                        value = {this.state.todo}
-                        onChange={ (event) =>  this.setState({todo:event.target.value}) }
+                        style={textBoxStyle}
+                        value={this.state.todo}
+                        onChange={(event) => this.setState({ todo: event.target.value })}
                     />
+                </Paper>
 
             </div>
         );
