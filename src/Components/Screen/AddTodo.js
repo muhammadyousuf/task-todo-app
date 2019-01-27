@@ -26,6 +26,12 @@ const styles = theme => ({
 
 
 class AddTodo extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            todo:''
+        }
+    }
     render() {
         return (
             <div>
@@ -33,6 +39,8 @@ class AddTodo extends Component {
                         id="standard-dense"
                         label="Add Todo"
                         style={{ marginTop: '6%', width: '45%' }}
+                        value = {this.state.todo}
+                        onChange={ (event) =>  this.setState({todo:event.target.value}) }
                     />
 
             </div>
