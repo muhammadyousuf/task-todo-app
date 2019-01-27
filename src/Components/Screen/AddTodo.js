@@ -1,58 +1,48 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField'
+import {  TextField } from '@material-ui/core';
 
 const styles = theme => ({
     container: {
-      display: 'flex',
-      flexWrap: 'wrap',
+        display: 'flex',
+        flexWrap: 'wrap',
     },
     textField: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
-      width: 200,
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 200,
     },
     dense: {
-      marginTop: 19,
+        marginTop: 19,
     },
     menu: {
-      width: 200,
+        width: 200,
     },
-  });
-  
-  const currencies = [
-    {
-      value: 'USD',
-      label: '$',
-    },
-    {
-      value: 'EUR',
-      label: '€',
-    },
-    {
-      value: 'BTC',
-      label: '฿',
-    },
-    {
-      value: 'JPY',
-      label: '¥',
-    },
-  ];
-  
-  
+});
 
-export default class AddTodo extends Component {
+
+
+
+
+class AddTodo extends Component {
     render() {
-        const { classes } = this.props;
         return (
             <div>
-                <h1>Hello</h1>
+                <TextField
+                        id="standard-dense"
+                        label="Add Todo"
+                        style={{ marginTop: '6%', width: '45%' }}
+                    />
+
             </div>
         );
     }
 }
+AddTodo.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(AddTodo);
 
 
