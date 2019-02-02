@@ -18,3 +18,8 @@ export const buttonStyle = {
     alignItems: 'center',
     width: '68%'
 };
+export const TableHeader = {
+    fontFamily: 'Times',
+    color: 'White',
+    fontSize: 16 
+}

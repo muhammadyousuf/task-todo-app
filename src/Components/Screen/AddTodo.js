@@ -34,7 +34,7 @@ class AddTodo extends Component {
         super(props);
         this.state = {
             title: '',
-            order:null,
+            order:'',
             completed:false
         }
     }
