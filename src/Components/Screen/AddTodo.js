@@ -33,7 +33,9 @@ class AddTodo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todo: ''
+            title: '',
+            order:null,
+            completed:false
         }
     }
     render() {
@@ -41,10 +43,17 @@ class AddTodo extends Component {
             <div>
                 <Paper style={paperStyle} elevation={20} rounded="true" >
                     <TextField
-                        label="Add Todo"
+                        label="Title"
                         style={textBoxStyle}
-                        value={this.state.todo}
-                        onChange={(event) => this.setState({ todo: event.target.value })}
+                        value={this.state.title}
+                        onChange={(event) => this.setState({ title: event.target.value })}
+                    />
+                     <TextField
+                        label="Order"
+                        type="number"
+                        style={textBoxStyle}
+                        value={this.state.order}
+                        onChange={(event) => this.setState({ order: event.target.value })}
                     />
                     <Button variant="contained" color="primary" style={buttonStyle} onClick={() => addFunc(this,()=>{
                        

@@ -1,11 +1,11 @@
 export  const textBoxStyle = {
-        marginTop: '4%',
+        marginTop: '2%',
         width: '70%',
     
     };
    export const paperStyle = {
-    height: 150,
-    marginTop: '5%',
+    height: 200,
+    marginTop: '2%',
     width: '40%',
     marginLeft: '30%',
     marginRight: '30%',
