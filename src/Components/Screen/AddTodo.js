@@ -62,6 +62,8 @@ class AddTodo extends Component {
                       //response data
                       let tempArr = pageRefProp.state.TodoList;
 
+                      pageRefProp.setState({title:'',order:''})
+
                       tempArr.push(data)
                       pageRefProp.setState({ 
                         TodoList:tempArr
