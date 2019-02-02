@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Paper, TextField } from '@material-ui/core';
-import Button from '@material-ui/core/Button'; 
-import {textBoxStyle,paperStyle, buttonStyle} from '../Style/style';
-import {addFunc} from '../Function/add';
-
+import Button from '@material-ui/core/Button';
+import { textBoxStyle, paperStyle, buttonStyle } from '../Style/style';
+import { addFunc } from '../Function/add';
+import Connect from '../Function/api';
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -34,8 +34,8 @@ class AddTodo extends Component {
         super(props);
         this.state = {
             title: '',
-            order:'',
-            completed:false
+            order: '',
+            completed: false
         }
     }
     render() {
@@ -48,16 +48,16 @@ class AddTodo extends Component {
                         value={this.state.title}
                         onChange={(event) => this.setState({ title: event.target.value })}
                     />
-                     <TextField
+                    <TextField
                         label="Order"
                         type="number"
                         style={textBoxStyle}
                         value={this.state.order}
                         onChange={(event) => this.setState({ order: event.target.value })}
                     />
-                    <Button variant="contained" color="primary" style={buttonStyle} onClick={() => addFunc(this,()=>{
-                       
-                       this.setState({todo:''})
+                    <Button variant="contained" color="primary" style={buttonStyle} onClick={() => addFunc(this, () => {
+                      
+                        this.setState({ todo: '' })
                     })} >
                         ADD TODO
                     </Button>
