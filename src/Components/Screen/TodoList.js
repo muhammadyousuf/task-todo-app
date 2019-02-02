@@ -8,7 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {TableHeader} from '../Style/style';
+import { TableHeader } from '../Style/style';
 
 const styles = theme => ({
     root: {
@@ -34,9 +34,24 @@ class TodoList extends Component {
     }
     componentDidMount() {
         let record = {}
+        let TodoData = []
         Connect(record, "get", "/")
             .then(res => res.json())
-            .then((json) => console.log(json))
+            .then((json) =>{
+                console.log(json)
+                for (var key in json) {
+                    TodoData.push({
+                        id: json[key].id,
+                        title: json[key].title,
+                        order: json[key].order,
+                        completed: json[key].completed,
+                    })
+                    
+                }
+                
+                this.setState({TodoList:TodoData})
+            
+            })
             .catch((err) => console.log('err', err))
     }
     render() {
@@ -44,18 +59,19 @@ class TodoList extends Component {
         return (
             <div>
                 <Paper className={classes.root}>
-                <Table className={classes.table}>
-                    <TableHead  >
-                        <TableRow style={{ backgroundColor: "#2143b7" }} >
-                            <TableCell style={TableHeader} >ID</TableCell>
-                            <TableCell style={TableHeader} >Title</TableCell>
-                            <TableCell style={TableHeader} >Order</TableCell>
-                            <TableCell style={TableHeader} >Completed</TableCell>
-                            <TableCell style={TableHeader}>Remove</TableCell>
-
-                        </TableRow>
-                    </TableHead>
-                </Table>
+                    <Table className={classes.table}>
+                        <TableHead  >
+                            <TableRow style={{ backgroundColor: "#2143b7" }} >
+                                <TableCell style={TableHeader} >ID</TableCell>
+                                <TableCell style={TableHeader} >Title</TableCell>
+                                <TableCell style={TableHeader} >Order</TableCell>
+                                <TableCell style={TableHeader} >Completed</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                               
+                        </TableBody>
+                    </Table>
                 </Paper>
             </div>
         )
