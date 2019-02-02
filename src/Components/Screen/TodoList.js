@@ -44,7 +44,7 @@ class TodoList extends Component {
                         id: json[key].id,
                         title: json[key].title,
                         order: json[key].order,
-                        completed: json[key].completed,
+                        completed: json[key].completed === true ? "Completed" : "Not COmpleted",
                     })
                     
                 }
@@ -54,6 +54,8 @@ class TodoList extends Component {
             })
             .catch((err) => console.log('err', err))
     }
+
+    
     render() {
         const { classes } = this.props;
         return (
@@ -69,7 +71,24 @@ class TodoList extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                               
+                               {
+                                   this.state.TodoList.map((data, index) =>{
+                                       return(
+                                        <TableRow key={index}>
+                                        <TableCell component="th" scope="row">
+                                          {data.id}
+                                        </TableCell>
+                                        <TableCell component="th" scope="row">
+                                          {data.title}
+                                        </TableCell><TableCell component="th" scope="row">
+                                          {data.order}
+                                        </TableCell><TableCell component="th" scope="row">
+                                          {data.completed}
+                                        </TableCell>
+                                        </TableRow>
+                                       )
+                                   })
+                               }
                         </TableBody>
                     </Table>
                 </Paper>
@@ -78,6 +97,8 @@ class TodoList extends Component {
     }
 
 }
+
+
 TodoList.propTypes = {
     classes: PropTypes.object.isRequired,
 };
