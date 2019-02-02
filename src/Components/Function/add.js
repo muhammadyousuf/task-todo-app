@@ -1,5 +1,4 @@
 export const addFunc = (pageRef,callBack)=>{
-
     const {todo} = pageRef.state;
     console.log(todo)
     if(todo === ""){
