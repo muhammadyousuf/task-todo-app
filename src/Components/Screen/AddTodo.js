@@ -5,7 +5,6 @@ import { Paper, TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { textBoxStyle, paperStyle, buttonStyle } from '../Style/style';
 import { addFunc } from '../Function/add';
-import Connect from '../Function/api';
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -39,25 +38,35 @@ class AddTodo extends Component {
         }
     }
     render() {
+
+        let {pageRefProp} = this.props
+
         return (
             <div>
                 <Paper style={paperStyle} elevation={20} rounded="true" >
                     <TextField
                         label="Title"
                         style={textBoxStyle}
-                        value={this.state.title}
-                        onChange={(event) => this.setState({ title: event.target.value })}
+                        value={pageRefProp.state.title}
+                        onChange={(event) => pageRefProp.setState({ title: event.target.value })}
                     />
                     <TextField
                         label="Order"
                         type="number"
                         style={textBoxStyle}
-                        value={this.state.order}
-                        onChange={(event) => this.setState({ order: event.target.value })}
+                        value={pageRefProp.state.order}
+                        onChange={(event) => pageRefProp.setState({ order: event.target.value })}
                     />
-                    <Button variant="contained" color="primary" style={buttonStyle} onClick={() => addFunc(this, () => {
+                    <Button variant="contained" color="primary" style={buttonStyle} onClick={() => addFunc(pageRefProp, (data) => {
                       
-                        this.setState({ todo: '' })
+                      //response data
+                      let tempArr = pageRefProp.state.TodoList;
+
+                      tempArr.push(data)
+                      pageRefProp.setState({ 
+                        TodoList:tempArr
+                       })
+
                     })} >
                         ADD TODO
                     </Button>

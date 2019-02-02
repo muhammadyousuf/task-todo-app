@@ -33,6 +33,9 @@ class TodoList extends Component {
         }
     }
     componentDidMount() {
+
+        let {pageRefProp} = this.props
+
         let record = {}
         let TodoData = []
         Connect(record, "get", "/")
@@ -49,7 +52,7 @@ class TodoList extends Component {
                     
                 }
                 
-                this.setState({TodoList:TodoData})
+                pageRefProp.setState({TodoList:TodoData})
             
             })
             .catch((err) => console.log('err', err))
@@ -58,6 +61,7 @@ class TodoList extends Component {
     
     render() {
         const { classes } = this.props;
+        let {pageRefProp} = this.props
         return (
             <div>
                 <Paper className={classes.root}>
@@ -72,7 +76,7 @@ class TodoList extends Component {
                         </TableHead>
                         <TableBody>
                                {
-                                   this.state.TodoList.map((data, index) =>{
+                                   pageRefProp.state.TodoList.map((data, index) =>{
                                        return(
                                         <TableRow key={index}>
                                         <TableCell component="th" scope="row">

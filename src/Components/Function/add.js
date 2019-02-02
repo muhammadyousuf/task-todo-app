@@ -1,6 +1,6 @@
 import Connect from './api';
-export const addFunc = (pageRef,callBack)=>{
-    const {title, order, completed} = pageRef.state;
+export const addFunc = (pageRefProp,callBack)=>{
+    const {title, order, completed} = pageRefProp.state;
     let record = {}
     record.title = title;
     record.order = order;
@@ -8,7 +8,15 @@ export const addFunc = (pageRef,callBack)=>{
     Connect(record, "post", "/")
         .then((res) => res.json())
         .then((json) =>{
+            console.log(JSON.stringify(json))
 
+            let res = {
+                id:json.id,
+                title:json.title,
+                completed:"Completed",
+                order:json.order
+            }
+            callBack(res)
         })
         .catch((err) => console.log(err))
       
